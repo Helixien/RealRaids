@@ -1,4 +1,7 @@
-c:\GAMES\Rimworld\Mods\RealRaids\1.2\Assemblies\RealRaids.dll
-c:\GAMES\Rimworld\Mods\RealRaids\1.2\Source\RealRaids\obj\Debug\RealRaids.csprojAssemblyReference.cache
-c:\GAMES\Rimworld\Mods\RealRaids\1.2\Source\RealRaids\obj\Debug\RealRaids.csproj.CoreCompileInputs.cache
-c:\GAMES\Rimworld\Mods\RealRaids\1.2\Source\RealRaids\obj\Debug\RealRaids.dll
+c:/GAMES/Rimworld/Mods/RealRaids/1.2/Assemblies/RealRaids.dll
+c:/GAMES/Rimworld/Mods/RealRaids/1.2/Source/RealRaids/obj/Debug/RealRaids.csprojAssemblyReference.cache
+c:/GAMES/Rimworld/Mods/RealRaids/1.2/Source/RealRaids/obj/Debug/RealRaids.csproj.CoreCompileInputs.cache
+c:/GAMES/Rimworld/Mods/RealRaids/1.2/Source/RealRaids/obj/Debug/RealRaids.dll
+/Users/karimbatbouta/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods/RealRaids/1.2/Assemblies/RealRaids.dll
+/Users/karimbatbouta/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods/RealRaids/1.2/Source/RealRaids/obj/Debug/RealRaids.csproj.CoreCompileInputs.cache
+/Users/karimbatbouta/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods/RealRaids/1.2/Source/RealRaids/obj/Debug/RealRaids.dll
