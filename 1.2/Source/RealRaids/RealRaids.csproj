@@ -372,6 +372,9 @@
     <Compile Include="Scientific\Clustering\KMeans.cs" />
     <Compile Include="Patches\Pawn_EquipementTracker_Patch.cs" />
     <Compile Include="LordToils\LordToil_AssaultColony.cs" />
+    <Compile Include="JobGivers\JobGiver_CarryPawnToSafety.cs" />
+    <Compile Include="JobDrivers\JobDriver_CarrayPawn.cs" />
+    <Compile Include="LordToils\LordToil_Regroup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

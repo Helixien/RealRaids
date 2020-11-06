@@ -1,28 +1,30 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="LordToils/LordToil_AssaultColony.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Patches/LordJob_AssaultColony_Patch.cs" Line="20" Column="1" />
-      <File FileName="JobGivers/JobGiver_EquipBestWeapon.cs" Line="37" Column="17" />
-      <File FileName="MapComponent_RealRaids.cs" Line="13" Column="1" />
-      <File FileName="Patches/Pawn_EquipementTracker_Patch.cs" Line="13" Column="43" />
-      <File FileName="Storage/PawnDataStore.cs" Line="8" Column="44" />
-      <File FileName="LordToils/LordToil_EquipBestWeapons.cs" Line="27" Column="48" />
-      <File FileName="Main.cs" Line="46" Column="35" />
-      <File FileName="Finder.cs" Line="1" Column="1" />
-      <File FileName="RealRaidsDefOf.cs" Line="7" Column="20" />
+      <File FileName="Patches/LordJob_AssaultColony_Patch.cs" Line="23" Column="37" />
+      <File FileName="JobGivers/JobGiver_EquipBestWeapon.cs" Line="26" Column="55" />
+      <File FileName="MapComponent_RealRaids.cs" />
+      <File FileName="Patches/Pawn_EquipementTracker_Patch.cs" />
+      <File FileName="Storage/PawnDataStore.cs" Line="11" Column="10" />
+      <File FileName="Main.cs" />
+      <File FileName="Finder.cs" />
+      <File FileName="RealRaidsDefOf.cs" Line="10" Column="39" />
+      <File FileName="LordToils/LordToil_AssaultColony.cs" Line="12" Column="1" />
+      <File FileName="JobGivers/JobGiver_CarryPawnToSafety.cs" Line="24" Column="64" />
+      <File FileName="JobDrivers/JobDriver_CarrayPawn.cs" Line="19" Column="1" />
+      <File FileName="RealRaidsSettings.cs" Line="1" Column="1" />
+      <File FileName="LordToils/LordToil_Regroup.cs" Line="30" Column="60" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="RealRaids" expanded="True">
             <Node name="RealRaids" expanded="True">
-              <Node name="JobGivers" expanded="True" />
-              <Node name="LordToils" expanded="True">
-                <Node name="LordToil_AssaultColony.cs" selected="True" />
+              <Node name="JobDrivers" expanded="True" />
+              <Node name="LordToils" expanded="True" />
+              <Node name="Patches" expanded="True">
+                <Node name="LordJob_AssaultColony_Patch.cs" selected="True" />
               </Node>
-              <Node name="Patches" expanded="True" />
-              <Node name="Properties" expanded="True" />
-              <Node name="Storage" expanded="True" />
             </Node>
           </Node>
         </State>

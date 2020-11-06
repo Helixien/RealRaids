@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reflection;
+using System.Runtime.Remoting.Messaging;
 using HarmonyLib;
+using RealRaids.LordToils;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -18,9 +20,20 @@ namespace RealRaids.Patches
             LordToil lordToil_assaultColony = new LordToil_AssaultColony();
             stateGraph.AddToil(lordToil_assaultColony);
 
+            LordToil lordToil_regroup = new LordToil_Regroup();
+
+            Transition assaultToRegroup = new Transition(lordToil_assaultColony, lordToil_regroup);
+            assaultToRegroup.AddTrigger(new Trigger_PawnHarmed(0.2f));
+            stateGraph.AddTransition(assaultToRegroup);
+
+            Transition regroupToAssault = new Transition(lordToil_assaultColony, lordToil_regroup);
+            regroupToAssault.AddTrigger(new Trigger_TicksPassed(1250));
+            stateGraph.AddTransition(regroupToAssault);
+
             LordToil_ExitMap lordToil_ExitMap = new LordToil_ExitMap(LocomotionUrgency.Jog, canDig: false, interruptCurrentJob: true);
             lordToil_ExitMap.useAvoidGrid = true;
             stateGraph.AddToil(lordToil_ExitMap);
+
 
             if (__instance.assaulterFaction.def.humanlikeFaction)
             {
