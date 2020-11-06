@@ -361,14 +361,19 @@
         <Compile Include="RealRaidsSettings.cs" />
         <Compile Include="RealRaidsMod.cs" />
         <Compile Include="Patches\LordJob_AssaultColony_Patch.cs" />
-        <Compile Include="MapComponent_RealRaids.cs" />
         <Compile Include="Extensions.cs" />
+        <Compile Include="Storage\BaseDataStore.cs" />
+        <Compile Include="Storage\PawnDataStore.cs" />
+        <Compile Include="MapComponent_RealRaids.cs" />
+        <Compile Include="WorldComponent_RealRaids.cs" />
+        <Compile Include="Storage\FactionDataStore.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Patches\" />
+      <Folder Include="Storage\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="Publicise" BeforeTargets="BeforeBuild" Condition="$([MSBuild]::IsOsPlatform(Windows))">
