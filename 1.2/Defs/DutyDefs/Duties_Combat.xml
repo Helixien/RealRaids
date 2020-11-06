@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <DutyDef>
+    <defName>RR_EquipBestWeapons</defName>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="RealRaids.JobGiver_EquipBestWeapon">
+          <itemRadiusToSearch>50</itemRadiusToSearch>
+        </li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+
+
+</Defs>
