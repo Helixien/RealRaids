@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using UnityEngine;
 using Verse;
@@ -36,6 +37,19 @@ namespace RealRaids.Scientific.Clustering
             }
         }
 
+        public void DebugDraw(Map map)
+        {
+            foreach (var centroid in centroids)
+            {
+                map.debugDrawer.FlashCell(centroid.ToIntVec3());
+            }
+            foreach (var point in data)
+            {
+                var centroidIndex = Predict(point);
+                map.debugDrawer.FlashLine(point.ToIntVec3(), centroids[centroidIndex].ToIntVec3(), duration: 1);
+            }
+        }
+
         public void Start()
         {
             this.SelectCentroids();
@@ -67,7 +81,7 @@ namespace RealRaids.Scientific.Clustering
             return centroidIndex;
         }
 
-        private bool Iterate()
+        public bool Iterate()
         {
             for (int i = 0; i < classification.Length; i++)
             {
@@ -97,7 +111,7 @@ namespace RealRaids.Scientific.Clustering
                 {
                     mean += x;
                 }
-                mean = mean / classification[i].Count;
+                mean = mean / (classification[i].Count > 0 ? classification[i].Count : 1);
                 if (classification[i].Count > 0 && Vector3.Distance(centroids[i], mean) > 1f)
                 {
                     changed = true;

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using RealRaids.Scientific.Clustering;
 using RimWorld;
 using Verse;
 
@@ -8,7 +10,6 @@ namespace RealRaids
     {
         public MapComponent_RealRaids(Map map) : base(map)
         {
-
         }
 
         public override void MapComponentTick()
