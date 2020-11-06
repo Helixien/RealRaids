@@ -9,6 +9,7 @@
     <reportString>moving.</reportString>
     <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
   </JobDef>
+
   <JobDef>
     <defName>Follow</defName>
     <driverClass>JobDriver_Follow</driverClass>
