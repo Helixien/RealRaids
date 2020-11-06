@@ -356,7 +356,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="JobGivers\JobGiver_EquipBestWeapon.cs" />
-    <Compile Include="LordToils\LordToil_EquipBestWeapons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Finder.cs" />
     <Compile Include="Main.cs" />
@@ -372,6 +371,7 @@
     <Compile Include="Storage\FactionDataStore.cs" />
     <Compile Include="Scientific\Clustering\KMeans.cs" />
     <Compile Include="Patches\Pawn_EquipementTracker_Patch.cs" />
+    <Compile Include="LordToils\LordToil_AssaultColony.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

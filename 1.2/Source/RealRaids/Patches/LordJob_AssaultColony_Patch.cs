@@ -15,8 +15,8 @@ namespace RealRaids.Patches
         public static bool Prefix(LordJob_AssaultColony __instance, ref StateGraph __result)
         {
             StateGraph stateGraph = new StateGraph();
-            LordToil equipToil = new LordToil_EquipBestWeapons();
-            stateGraph.AddToil(equipToil);
+            LordToil lordToil_assaultColony = new LordToil_AssaultColony();
+            stateGraph.AddToil(lordToil_assaultColony);
 
             LordToil_ExitMap lordToil_ExitMap = new LordToil_ExitMap(LocomotionUrgency.Jog, canDig: false, interruptCurrentJob: true);
             lordToil_ExitMap.useAvoidGrid = true;
@@ -26,20 +26,19 @@ namespace RealRaids.Patches
             {
                 if (__instance.canTimeoutOrFlee)
                 {
-                    Transition transition = new Transition(equipToil, lordToil_ExitMap);
-                    transition.AddTrigger(new Trigger_TicksPassed(500));
-                    transition.AddPreAction(new TransitionAction_Message("MessageRaidersGivenUpLeaving".Translate(__instance.assaulterFaction.def.pawnsPlural.CapitalizeFirst()
+                    Transition assaultToGiveUp = new Transition(lordToil_assaultColony, lordToil_ExitMap);
+                    assaultToGiveUp.AddTrigger(new Trigger_TicksPassed(500));
+                    assaultToGiveUp.AddPreAction(new TransitionAction_Message("MessageRaidersGivenUpLeaving".Translate(__instance.assaulterFaction.def.pawnsPlural.CapitalizeFirst()
                         , __instance.assaulterFaction.Name)));
-                    stateGraph.AddTransition(transition);
+                    stateGraph.AddTransition(assaultToGiveUp);
                 }
             }
-            Transition transition2 = new Transition(equipToil, lordToil_ExitMap);
-            transition2.AddTrigger(new Trigger_BecameNonHostileToPlayer());
-            transition2.AddPreAction(new TransitionAction_Message("MessageRaidersLeaving".Translate(__instance.assaulterFaction.def.pawnsPlural.CapitalizeFirst(), __instance.assaulterFaction.Name)));
-            stateGraph.AddTransition(transition2);
+            Transition assaultToExit = new Transition(lordToil_assaultColony, lordToil_ExitMap);
+            assaultToExit.AddTrigger(new Trigger_BecameNonHostileToPlayer());
+            assaultToExit.AddPreAction(new TransitionAction_Message("MessageRaidersLeaving".Translate(__instance.assaulterFaction.def.pawnsPlural.CapitalizeFirst(), __instance.assaulterFaction.Name)));
 
+            stateGraph.AddTransition(assaultToExit);
             __result = stateGraph;
-
             return false;
         }
     }

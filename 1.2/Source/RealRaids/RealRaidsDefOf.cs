@@ -9,6 +9,6 @@ namespace RealRaids
     [DefOf]
     public static class RealRaidsDefOf
     {
-        public static DutyDef RR_EquipBestWeapons;
+        public static DutyDef RR_AssaultColony;
     }
 }
