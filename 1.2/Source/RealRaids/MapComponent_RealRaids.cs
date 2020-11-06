@@ -25,6 +25,13 @@ namespace RealRaids
             }
         }
 
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            CleanUp();
+            Scribe_Collections.Look(ref equipement, "equipement", LookMode.Reference);
+        }
+
         public void Notify_EquipementDroped(ThingWithComps equipement)
         {
             this.equipement.Add(equipement);
