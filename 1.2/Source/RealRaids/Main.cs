@@ -9,44 +9,30 @@ namespace RealRaids
     [StaticConstructorOnStartup]
     public class Main : ModBase
     {
-        [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+        [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
         public class OnInitialization : Attribute
         {
 
         }
 
-        [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-        public class OnMapTickRare : Attribute
-        {
-
-        }
-
-        [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-        public class OnMapTickLong : Attribute
-        {
-
-        }
-
-        [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+        [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
         public class OnDefsLoaded : Attribute
         {
 
         }
 
-        [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+        [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
         public class OnMapLoaded : Attribute
         {
 
         }
 
-        [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+        [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
         public class OnMapDiscarded : Attribute
         {
 
         }
 
-        IEnumerable<Action> onTickRare = GetAction<OnMapTickRare>();
-        IEnumerable<Action> onTickLong = GetAction<OnMapTickLong>();
         IEnumerable<Action> onDefsLoaded = GetAction<OnDefsLoaded>();
         IEnumerable<Action> onMapLoaded = GetAction<OnMapLoaded>();
         IEnumerable<Action> onMapDiscarded = GetAction<OnMapDiscarded>();
@@ -74,27 +60,6 @@ namespace RealRaids
             foreach (var method in methods)
             {
                 yield return () => { method.Invoke(null, null); };
-            }
-        }
-
-        public override void Tick(int currentTick)
-        {
-            base.Tick(currentTick);
-
-            if (currentTick % GenTicks.TickRareInterval == 0)
-            {
-                foreach (var action in onTickRare)
-                {
-                    action.Invoke();
-                }
-            }
-
-            if (currentTick % GenTicks.TickLongInterval == 0)
-            {
-                foreach (var action in onTickLong)
-                {
-                    action.Invoke();
-                }
             }
         }
 
