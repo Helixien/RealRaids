@@ -371,12 +371,14 @@
     <Compile Include="GameComponent_RealRaids.cs" />
     <Compile Include="Storage\FactionDataStore.cs" />
     <Compile Include="Scientific\Clustering\KMeans.cs" />
+    <Compile Include="Patches\Pawn_EquipementTracker_Patch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="JobDrivers\" />
+    <Folder Include="Triggers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="Publicise" BeforeTargets="BeforeBuild" Condition="$([MSBuild]::IsOsPlatform(Windows))">
