@@ -16,5 +16,10 @@ namespace RealRaids
         {
             base.MapComponentTick();
         }
+
+        public void Notify_EquipementDroped(ThingWithComps equipement)
+        {
+
+        }
     }
 }
