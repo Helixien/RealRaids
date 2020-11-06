@@ -20,6 +20,16 @@ namespace RealRaids
 
         private Dictionary<Faction, FactionDataStore> factionCache = new Dictionary<Faction, FactionDataStore>();
 
+        public GameComponent_RealRaids()
+        {
+
+        }
+
+        public GameComponent_RealRaids(Game game) : base()
+        {
+
+        }
+
         public override void ExposeData()
         {
             this.CollectionsCleanup();

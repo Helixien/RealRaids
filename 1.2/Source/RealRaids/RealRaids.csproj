@@ -367,6 +367,7 @@
         <Compile Include="MapComponent_RealRaids.cs" />
         <Compile Include="GameComponent_RealRaids.cs" />
         <Compile Include="Storage\FactionDataStore.cs" />
+        <Compile Include="Scientific\Clustering\KMeans.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
@@ -374,6 +375,8 @@
     <ItemGroup>
       <Folder Include="Patches\" />
       <Folder Include="Storage\" />
+      <Folder Include="Scientific\" />
+      <Folder Include="Scientific\Clustering\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="Publicise" BeforeTargets="BeforeBuild" Condition="$([MSBuild]::IsOsPlatform(Windows))">
