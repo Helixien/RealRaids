@@ -14,8 +14,8 @@ namespace RealRaids
         private static Map[] maps = new Map[20];
         private static MapComponent_RealRaids[] mapComponent_RealRaids = new MapComponent_RealRaids[20];
 
-        private static World world;
-        private static WorldComponent_RealRaids worldComponent_RealRaids;
+        private static Game game;
+        private static GameComponent_RealRaids gameComponent_RealRaids;
 
         /// <summary>
         /// Used to initialize the cache for a map.
@@ -31,10 +31,10 @@ namespace RealRaids
         /// <summary>
         /// Used to initialize the worldcomp cache.
         /// </summary>
-        private static void InitializeWorldCache()
+        private static void InitializeGameCache()
         {
-            world = Find.World;
-            worldComponent_RealRaids = world.GetComponent<WorldComponent_RealRaids>();
+            game = Current.Game;
+            gameComponent_RealRaids = game.GetComponent<GameComponent_RealRaids>();
         }
 
         /// <summary>
@@ -54,17 +54,17 @@ namespace RealRaids
 
 
         /// <summary>
-        /// Get the current WorldComponent_RealRaids.
+        /// Get the current GameComponent_RealRaids.
         /// </summary>
         /// <param name="world"></param>
         /// <returns></returns>
-        public static WorldComponent_RealRaids GetRealRaidsWorldComp(this World world)
+        public static GameComponent_RealRaids GetRealRaidsGameComp(this Game game)
         {
-            if (world != Extensions.world)
+            if (game != Extensions.game)
             {
-                InitializeWorldCache();
+                InitializeGameCache();
             }
-            return worldComponent_RealRaids;
+            return gameComponent_RealRaids;
         }
 
         /// <summary>
@@ -74,11 +74,11 @@ namespace RealRaids
         /// <returns></returns>
         public static PawnDataStore GetDataStore([NotNull] this Pawn pawn)
         {
-            if (Find.World != world)
+            if (game != Current.Game)
             {
-                InitializeWorldCache();
+                InitializeGameCache();
             }
-            return worldComponent_RealRaids.GetPawnStore(pawn);
+            return gameComponent_RealRaids.GetPawnStore(pawn);
         }
 
         /// <summary>
@@ -88,11 +88,11 @@ namespace RealRaids
         /// <returns></returns>
         public static FactionDataStore GetDataStore([NotNull] this Faction faction)
         {
-            if (Find.World != world)
+            if (game != Current.Game)
             {
-                InitializeWorldCache();
+                InitializeGameCache();
             }
-            return worldComponent_RealRaids.GetFactionStore(faction);
+            return gameComponent_RealRaids.GetFactionStore(faction);
         }
     }
 }

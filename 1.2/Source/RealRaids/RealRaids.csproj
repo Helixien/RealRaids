@@ -365,7 +365,7 @@
         <Compile Include="Storage\BaseDataStore.cs" />
         <Compile Include="Storage\PawnDataStore.cs" />
         <Compile Include="MapComponent_RealRaids.cs" />
-        <Compile Include="WorldComponent_RealRaids.cs" />
+        <Compile Include="GameComponent_RealRaids.cs" />
         <Compile Include="Storage\FactionDataStore.cs" />
     </ItemGroup>
     <ItemGroup>

@@ -10,17 +10,15 @@ using Verse;
 
 namespace RealRaids
 {
-    public class WorldComponent_RealRaids : WorldComponent
+    public class GameComponent_RealRaids : GameComponent
     {
         private List<PawnDataStore> pawnDataStorage = new List<PawnDataStore>();
+
         private List<FactionDataStore> factionDataStorage = new List<FactionDataStore>();
 
         private Dictionary<int, PawnDataStore> pawnCache = new Dictionary<int, PawnDataStore>();
-        private Dictionary<Faction, FactionDataStore> factionCache = new Dictionary<Faction, FactionDataStore>();
 
-        public WorldComponent_RealRaids(World world) : base(world)
-        {
-        }
+        private Dictionary<Faction, FactionDataStore> factionCache = new Dictionary<Faction, FactionDataStore>();
 
         public override void ExposeData()
         {
