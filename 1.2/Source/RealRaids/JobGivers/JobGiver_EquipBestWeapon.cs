@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using RimWorld;
@@ -20,17 +21,18 @@ namespace RealRaids
             {
                 return null;
             }
-            if (TryFindBestWeapon(pawn, out Thing weapon))
+            if (TryFindBestWeapon(pawn, itemRadiusToSearch, store.alreadyHadAsWeapon, out Thing weapon))
             {
                 store.lastTick_EquipBestWeapon = GenTicks.TicksGame;
+                store.alreadyHadAsWeapon.Add(weapon.def);
                 return JobMaker.MakeJob(JobDefOf.Equip, weapon);
             }
             return null;
         }
 
-        private bool TryFindBestWeapon(Pawn pawn, out Thing weapon)
+        private static bool TryFindBestWeapon(Pawn pawn, float itemRadiusToSearch, HashSet<ThingDef> exclude, out Thing weapon)
         {
-            float equipedValue = pawn.equipment?.Primary.GetStatValue(StatDefOf.MarketValue, true) ?? 0;
+            float equipedValue = pawn.equipment?.Primary?.GetStatValue(StatDefOf.MarketValue) ?? 0;
             Predicate<Thing> validator = delegate (Thing t)
            {
                if (pawn != null && !pawn.CanReserve(t))
@@ -45,7 +47,15 @@ namespace RealRaids
                {
                    return false;
                }
-               if (t.GetStatValue(StatDefOf.MarketValue, true) <= equipedValue * 1.1f)
+               if (!t.def.IsRangedWeapon)
+               {
+                   return false;
+               }
+               if (t.GetStatValue(StatDefOf.MarketValue, true) <= equipedValue * 1.5f)
+               {
+                   return false;
+               }
+               if (exclude.Contains(t.def))
                {
                    return false;
                }

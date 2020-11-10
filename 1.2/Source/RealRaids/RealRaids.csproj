@@ -375,6 +375,10 @@
     <Compile Include="JobGivers\JobGiver_CarryPawnToSafety.cs" />
     <Compile Include="JobDrivers\JobDriver_CarrayPawn.cs" />
     <Compile Include="LordToils\LordToil_Regroup.cs" />
+    <Compile Include="RealRaidsDebugOptions.cs" />
+    <Compile Include="Triggers\Trigger_PawnsKilledOrDowned.cs" />
+    <Compile Include="Patches\PathFinder_Patch.cs" />
+    <Compile Include="Patches\Pawn_Patch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -29,7 +29,6 @@ namespace RealRaids
                 pawnDuty.locomotion = LocomotionUrgency.Jog;
                 pawn.mindState.duty = pawnDuty;
 
-                Log.Message(pawn + " gets duty: " + AssaultColonyDuty);
                 if (pawn.jobs.curJob != null)
                 {
                     pawn.jobs.EndCurrentJob(JobCondition.InterruptForced);

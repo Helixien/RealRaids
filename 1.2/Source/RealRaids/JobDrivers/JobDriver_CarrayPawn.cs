@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
+using Verse.AI.Group;
 
 namespace RealRaids
 {
@@ -21,11 +22,15 @@ namespace RealRaids
             yield return Toils_Haul.StartCarryThing(TargetIndex.A);
             yield return Toils_Goto.GotoCell(Position, PathEndMode.OnCell);
             yield return Toils_Haul.PlaceCarriedThingInCellFacing(TargetIndex.B);
+            yield return Toils_General.Do(() =>
+            {
+                pawn.GetLord().Notify_ReachedDutyLocation(pawn);
+            });
         }
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            return pawn.CanReserve(Comrade) && !Comrade.Dead;
+            return pawn.Reserve(TargetA, job, 1, -1, null, errorOnFailed);
         }
     }
 }
