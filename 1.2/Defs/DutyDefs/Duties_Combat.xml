@@ -6,10 +6,18 @@
     <thinkNode Class="ThinkNode_Priority">
       <subNodes>
             <li Class="JobGiver_TakeCombatEnhancingDrug" />
-            <li Class="RealRaids.JobGiver_EquipBestWeapon">
-               <jobFrequency>1500</jobFrequency>
-               <itemRadiusToSearch>50</itemRadiusToSearch>
+            <li Class="RealRaids.JobGiver_CarryPawnToSafety">
+               <jobFrequency>250</jobFrequency>
+               <chance>1</chance>
             </li>
+            <li Class="RealRaids.JobGiver_EscortRescuer">
+               <searchRadius>50</searchRadius>
+               <targetKeepRadius>15</targetKeepRadius>
+            </li>
+            <li Class="RealRaids.JobGiver_EquipBestWeapon">
+              <jobFrequency>1500</jobFrequency>
+              <itemRadiusToSearch>50</itemRadiusToSearch>
+           </li>
             <li Class="JobGiver_AIFightEnemies">
               <targetAcquireRadius>65</targetAcquireRadius>
               <targetKeepRadius>72</targetKeepRadius>
@@ -20,17 +28,6 @@
             <li Class="JobGiver_AITrashBuildingsDistant">
                 <attackAllInert>true</attackAllInert>
             </li>
-      </subNodes>
-    </thinkNode>
-  </DutyDef>
-  <DutyDef>
-    <defName>RR_HelpInjuredComrades</defName>
-    <alwaysShowWeapon>true</alwaysShowWeapon>
-    <thinkNode Class="ThinkNode_Priority">
-      <subNodes>
-            <li Class="JobGiver_TakeCombatEnhancingDrug" />
-            <li Class="JobGiver_AIDefendEscortee" />
-            <li Class="RealRaids.JobGiver_CarryPawnToSafety" />
       </subNodes>
     </thinkNode>
   </DutyDef>

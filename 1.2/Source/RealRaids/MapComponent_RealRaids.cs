@@ -66,6 +66,12 @@ namespace RealRaids
             {
                 tacticalGrid[currentIndex] = Mathf.Clamp(tacticalGrid[currentIndex] - 1, 0, 2500);
                 currentIndex = (currentIndex + 1) % numGridCell;
+#if DEBUG
+                if (Finder.settings.debug)
+                {
+                    map.debugDrawer.FlashCell(map.cellIndices.IndexToCell(currentIndex), 0, tacticalGrid[currentIndex].ToString());
+                }
+#endif
             }
         }
 

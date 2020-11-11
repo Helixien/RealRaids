@@ -24,6 +24,8 @@ namespace RealRaids
             yield return Toils_Haul.PlaceCarriedThingInCellFacing(TargetIndex.B);
             yield return Toils_General.Do(() =>
             {
+                var factionStore = pawn.factionInt.GetDataStore();
+                factionStore.alreadyRescuedPawns.Add(new PawnTimeSignature(Comrade));
                 pawn.GetLord().Notify_ReachedDutyLocation(pawn);
             });
         }

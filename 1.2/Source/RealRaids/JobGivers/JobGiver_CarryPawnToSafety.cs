@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -8,20 +9,47 @@ namespace RealRaids
 {
     public class JobGiver_CarryPawnToSafety : ThinkNode_JobGiver
     {
+        public float chance = 0.25f;
+        public float jobFrequency = 1250;
+
         public override Job TryGiveJob(Pawn pawn)
         {
-            Pawn other = pawn.mindState.duty.focus.Pawn;
-            LocalTargetInfo target = pawn.mindState.duty.focus;
-            if (other.Destroyed || other.Dead || !target.IsValid)
+            var store = pawn.GetDataStore();
+            if (GenTicks.TicksGame - store.lastTick_RescueComrade <= 1250)
             {
                 return null;
             }
-            if (!pawn.CanReach(pawn.mindState.duty.focus, PathEndMode.ClosestTouch, Danger.Deadly) || !pawn.CanReserve(target))
+            store.lastTick_RescueComrade = GenTicks.TicksGame;
+            if (Rand.Chance(chance) && GetCandidate(pawn, out var other))
             {
-                return null;
+                LocalTargetInfo target = new LocalTargetInfo(other);
+                IntVec3 safeCell = FindSafeCell(pawn);
+                return JobMaker.MakeJob(RealRaidsDefOf.RR_CarryPawn, target, new LocalTargetInfo(safeCell));
             }
-            IntVec3 safeCell = FindSafeCell(pawn);
-            return JobMaker.MakeJob(RealRaidsDefOf.RR_CarryPawn, new LocalTargetInfo(other), new LocalTargetInfo(safeCell));
+            return null;
+        }
+
+        private bool GetCandidate(Pawn pawn, out Pawn other)
+        {
+            var map = pawn.Map;
+            var closest = (int)1e5;
+            other = null;
+            var factionStore = pawn.factionInt.GetDataStore();
+            foreach (Pawn p in map.mapPawns.PawnsInFaction(pawn.factionInt))
+            {
+                if (!p.Downed || p.Dead || factionStore.alreadyRescuedPawns.Count(s => s.pawn == p) != 0) continue;
+                var distance = (int)p.positionInt.DistanceTo(pawn.positionInt);
+                if (distance < closest && distance < 35 && p.CanReach(pawn, PathEndMode.ClosestTouch, Danger.Unspecified) && pawn.CanReserve(p))
+                {
+                    closest = distance;
+                    other = p;
+                }
+            }
+            if (other == null)
+            {
+                return false;
+            }
+            return true;
         }
 
         private IntVec3 FindSafeCell(Pawn pawn)

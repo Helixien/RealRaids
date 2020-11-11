@@ -11,8 +11,6 @@ namespace RealRaids
     {
         public static DutyDef RR_AssaultColony;
 
-        public static DutyDef RR_HelpInjuredComrades;
-
         public static JobDef RR_CarryPawn;
     }
 }

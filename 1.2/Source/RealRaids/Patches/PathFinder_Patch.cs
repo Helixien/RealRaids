@@ -46,7 +46,7 @@ namespace RealRaids
 
         public static int GetCellCost(int index)
         {
-            return current.tacticalGrid[index];
+            return current.tacticalGrid[index] * 10;
         }
 
         public static void Prefix(PathFinder __instance)

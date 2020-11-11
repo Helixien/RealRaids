@@ -374,11 +374,12 @@
     <Compile Include="LordToils\LordToil_AssaultColony.cs" />
     <Compile Include="JobGivers\JobGiver_CarryPawnToSafety.cs" />
     <Compile Include="JobDrivers\JobDriver_CarrayPawn.cs" />
-    <Compile Include="LordToils\LordToil_Regroup.cs" />
     <Compile Include="RealRaidsDebugOptions.cs" />
-    <Compile Include="Triggers\Trigger_PawnsKilledOrDowned.cs" />
+    <Compile Include="Triggers\Trigger_HeavyLosses.cs" />
     <Compile Include="Patches\PathFinder_Patch.cs" />
     <Compile Include="Patches\Pawn_Patch.cs" />
+    <Compile Include="JobGivers\JobGiver_EscortRescuer.cs" />
+    <Compile Include="Storage\DataStructers\PawnTimeSignature.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -386,6 +387,7 @@
   <ItemGroup>
     <Folder Include="JobDrivers\" />
     <Folder Include="Triggers\" />
+    <Folder Include="Storage\DataStructers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="Publicise" BeforeTargets="BeforeBuild" Condition="$([MSBuild]::IsOsPlatform(Windows))">

@@ -21,6 +21,10 @@ namespace RealRaids
         public override void DoSettingsWindowContents(Rect inRect)
         {
             base.DoSettingsWindowContents(inRect);
+            Listing_Standard listing = new Listing_Standard();
+            listing.Begin(inRect);
+            listing.CheckboxLabeled("Enable debug", ref Finder.settings.debug, "Enable debugging");
+            listing.End();
         }
 
         public override void WriteSettings()

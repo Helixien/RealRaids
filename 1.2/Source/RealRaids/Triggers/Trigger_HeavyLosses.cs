@@ -60,6 +60,15 @@ namespace RealRaids
             return false;
         }
 
+        public override void SourceToilBecameActive(Transition transition, LordToil previousToil)
+        {
+            if (!transition.sources.Contains(previousToil))
+            {
+                downingMomentum = 0;
+                killingMomentum = 0;
+            }
+        }
+
         private void UpdateMomentum(bool downed = false)
         {
             int deltaT;
@@ -98,11 +107,7 @@ namespace RealRaids
         {
             if (signal.type == TriggerSignalType.PawnLost)
             {
-                if (signal.condition == PawnLostCondition.IncappedOrKilled)
-                {
-                    return signal.Pawn.Dead;
-                }
-                return false;
+                return true;
             }
             return false;
         }
